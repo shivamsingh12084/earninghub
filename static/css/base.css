@@ -1,0 +1,8 @@
+h1 {
+    text-align: center;
+    color: gray;
+}
+.bookcover {
+    height: 300px;
+    width: auto;
+}

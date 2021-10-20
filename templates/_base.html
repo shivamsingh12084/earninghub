@@ -1,3 +1,5 @@
+{% load static %}
+{% load sass_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +7,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Earning Hub{% endblock title %}</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="{% sass_src 'css/main.scss' %}" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <header class="header">
+        <div class="container">
+          <nav class="bottom-nav">
+            <div class="bottom-nav-item active">
+              <div class="bottom-nav-link">
+                <a href="{% url 'home' %}">
+                    <i class="material-icons"><img src="https://img.icons8.com/material-rounded/24/000000/home.png"/></i>
+                </a>
+                <span></span>
+              </div>
+            </div>
+            
+            <div class="bottom-nav-item">
+              <div class="bottom-nav-link">
+                <a href="{% url 'search' %}">
+                    <i class="material-icons"><img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/></i>
+                </a>
+                <span></span>
+              </div>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="bottom-nav-item">
+                <div class="bottom-nav-link">
+                  <a href="{% url 'auth' %}">
+                      <i class="material-icons"><img src="https://img.icons8.com/ios-glyphs/30/000000/win.png"/></i>
+                  </a>
+                  <span></span>
+                </div>
+              </div>
+            {% endif %}
+            <div class="bottom-nav-item">
+              <div class="bottom-nav-link">
+                <a href="{% url 'login' %}">
+                    <i class="material-icons"><img src="https://img.icons8.com/ios-glyphs/30/000000/guest-male.png"/></i>
+                </a>
+                <span></span>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
     <div class="container">
         {% block content %}
         {% endblock content %}
     </div>
+    <!-- JavaScript -->
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>
